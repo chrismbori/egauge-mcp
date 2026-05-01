@@ -1,0 +1,46 @@
+[project]
+name = "egauge-mcp"
+version = "0.1.0"
+description = "Model Context Protocol server for eGauge energy meters — turns Claude into a live energy analyst"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Chris Mbori" }]
+keywords = ["mcp", "egauge", "energy", "claude", "anthropic", "monitoring"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    "mcp[cli]>=1.2.0",
+    "httpx>=0.27.0",
+    "pandas>=2.2.0",
+    "numpy>=1.26.0",
+    "tomli>=2.0.0; python_version < '3.11'",
+]
+
+[project.scripts]
+egauge-mcp = "egauge_mcp.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/chrismbori/egauge-mcp"
+Issues = "https://github.com/chrismbori/egauge-mcp/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/egauge_mcp"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+]
